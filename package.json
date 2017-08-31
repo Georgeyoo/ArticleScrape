@@ -1,0 +1,29 @@
+{
+  "name": "ArticleScrape",
+  "version": "1.0.0",
+  "description": "A web application that scrapes the New York Times for articles and allows the user to save articles and write notes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Georgeyoo/ArticleScrape.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Georgeyoo/ArticleScrape/issues"
+  },
+  "homepage": "https://github.com/Georgeyoo/ArticleScrape#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.11.9",
+    "request": "^2.81.0"
+  }
+}
