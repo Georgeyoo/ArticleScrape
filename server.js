@@ -48,11 +48,11 @@
 
 // Handlebars Set up
 
-		// // Sets a default file for handlebars to render
-		// app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+		// Sets a default file for handlebars to render
+		app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 		
-		// // sets express view engine to handlebars
-		// app.set("view engine", "handlebars");
+		// sets express view engine to handlebars
+		app.set("view engine", "handlebars");
 
 // Routes
 
@@ -60,8 +60,30 @@
 		// var router = require('./controllers/burgers_controller.js');
 		// app.use("/", router);
 		app.get("/", function(req, res) {
-			res.sendFile("./views/layout/main.handlebars");
+			res.render(__dirname + "/views/layouts/main.handlebars");
 		})
+
+		// ** BEGINNING OF SCRAPE ROUTES **
+
+			app.get("/scrape", function(req, res) {
+				request("https://www.nytimes.com/section/technology?WT.nav=page&action=click&contentCollection=Tech&module=HPMiniNav&pgtype=Homepage&region=TopBar", function(error, response, html) {
+					var $ = cheerio.load(html);
+					console.log(response);
+					var results = [];
+
+					$(".search-result-header").each(function(i, element) {
+						var link = $(element).children().attr("href");
+						var title = $(element).children().text("");
+
+
+							results.push({
+								title: title,
+								link: link
+							});
+					});
+				});
+				// console.log(results);
+			})
 
 
 // Listens on port 3000
