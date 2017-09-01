@@ -66,24 +66,41 @@
 		// ** BEGINNING OF SCRAPE ROUTES **
 
 			app.get("/scrape", function(req, res) {
-				request("https://www.nytimes.com/section/technology?WT.nav=page&action=click&contentCollection=Tech&module=HPMiniNav&pgtype=Homepage&region=TopBar", function(error, response, html) {
+				request("https://www.nytimes.com/", function(error, response, html) {
 					var $ = cheerio.load(html);
-					console.log(response);
 					var results = [];
+					// for(var i = 0; i < $("h2.story-heading").length; i ++) {
 
-					$(".search-result-header").each(function(i, element) {
+
+					// console.log($("h2.story-heading"));
+
+					$("h2.story-heading").each(function(i, element) {
 						var link = $(element).children().attr("href");
-						var title = $(element).children().text("");
+						var title = $(element).children().text();
+						// var summary = $(element).children().text("p.summary");
+
+						if(title != "" && typeof link != "undefined") {
 
 
 							results.push({
 								title: title,
 								link: link
+								// summary: summary
 							});
+						}
 					});
+
+					db.srapedData.insert({ results }, function(err, data) {
+						if(err) {
+							console.log(err);
+						} else {
+							res.json(data);
+						}
+					})
 				});
-				// console.log(results);
 			})
+
+			app.get
 
 
 // Listens on port 3000
