@@ -49,7 +49,7 @@
 // Handlebars Set up
 
 		// Sets a default file for handlebars to render
-		app.engine("handlebars", handlebars({ defaultLayout: "main" }));
+		app.engine("handlebars", handlebars({defaultLayout: "main"}));
 		
 		// sets express view engine to handlebars
 		app.set("view engine", "handlebars");
@@ -69,38 +69,34 @@
 				request("https://www.nytimes.com/", function(error, response, html) {
 					var $ = cheerio.load(html);
 					var results = [];
-					// for(var i = 0; i < $("h2.story-heading").length; i ++) {
 
-
-					// console.log($("h2.story-heading"));
-
+					// Iterate through each returned object and stores the title text and links
 					$("h2.story-heading").each(function(i, element) {
 						var link = $(element).children().attr("href");
 						var title = $(element).children().text();
-						// var summary = $(element).children().text("p.summary");
 
+						// Because I was getting empty strings as titles and undefined links
 						if(title != "" && typeof link != "undefined") {
 
-
+							// Push variables to the array
 							results.push({
 								title: title,
 								link: link
-								// summary: summary
 							});
 						}
 					});
 
-					db.srapedData.insert({ results }, function(err, data) {
-						if(err) {
-							console.log(err);
-						} else {
-							res.json(data);
-						}
-					})
+					// Stores the array in the database
+					// db.srapedData.insert({ results }, function(err, data) {
+					// 	if(err) {
+					// 		console.log(err);
+					// 	} else {
+					// 		res.json(data);
+					// 	}
+					// })
 				});
 			})
 
-			app.get
 
 
 // Listens on port 3000
