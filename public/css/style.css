@@ -10,12 +10,6 @@ body {
 	color: white;
 }
 
-/*.jumbotron {
-	background-image: url(../images/newspaper.jpg);
-	background-size: cover;
-    background-repeat: no-repeat;
-}
-*/
 .jumbotron {
 	background-image: url(../images/newspaper.png);
 	background-size: cover;
@@ -23,4 +17,12 @@ body {
     display: block;
 	height: 100%;
 	object-fit: contain;
+}
+
+.nav-butt {
+	margin-top: 25px;
+}
+
+.brand-logo {
+	margin-top: 10px;
 }

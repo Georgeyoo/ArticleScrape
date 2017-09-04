@@ -1,87 +1,21 @@
-<div class="jumbotron">
-<h1>Burger Joint!</h1>
-<hr> <h3> We got all kinds of CRAZY burgers! </h3>
-</div>
-
-<div class="container">
-
-  <div class="row">
-
-    <div class="col-md-6">
-
-      <div class="panel panel-primary">
-
-        <div class="panel-heading">
-          <h3 class="panel-title">Not yet Eaten!</h3>
-        </div>
-
-        <div class="panel-body">
-
-          <ul>
-            {{#each burger}}
-              {{#unless this.devoured}}
-                <li>
-                    {{this.id}}. {{this.burger_name}}
-
-                      <form action="/{{this.id}}?_method=PUT" method="POST">
-                        <input type="hidden" name="devoured" value="true">
-                        <button type="submit">Devour!</button>
-                      </form>
-                </li>
-              {{/unless}}
-            {{/each}}
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-      <div class="col-md-6">
-
-        <div class="panel panel-primary">
-
-          <div class="panel-heading">
-            <h3 class="panel-title">Eaten!</h3>
-          </div>
-
-          <div class="panel-body">
-            <ul>
-              {{#each burger}}
-                {{#if this.devoured}}
-                  <li>
-                    {{this.id}}. {{this.burger_name}}
-
-                  </li>
-                {{/if}}
-              {{/each}}
+  <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">ArticleScrape!</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#" class="nav-butt">Home</a></li>
+              <li><a href="#" class="nav-butt">Saved Articles</a></li>
+              <a class="waves-effect waves-light btn-large"><i class="material-icons left">remove_red_eye</i>Scrape Now!</a>
             </ul>
-
-          </div>
-
         </div>
-
-      </div>
-
-    </div>
-
+      </nav>
   </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h2 class="panel-title">Add a Burger</h2>
-        </div>
-        <div class="panel-body">
-          <form method="POST" action="/" class="button-size submitForm">
-            <textarea type="text" name="burger_name"></textarea>
-            <button type="submit" class="submitButton">Add Burger Now!</button>
-          </form>
-        </div>
-      </div>
-    </div>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">ArticleScrape!</h1>
+    <p class="lead">Scraping the New York Times!</p>
   </div>
 </div>

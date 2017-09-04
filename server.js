@@ -28,8 +28,8 @@
 		// Stores the mongojs configuration to the variable "db"
 		var db = mongojs(databaseURL, collections);
 
-		// Serve static content for the app from the "public" directory in the application directory.
-		app.use(express.static("views"));
+		// Serve static content for the app from the "views" directory in the application directory.
+		app.use(express.static("public"));
 
 
 // Database Setup
@@ -57,10 +57,9 @@
 // Routes
 
 		// Import routes and give the server access to them.
-		// var router = require('./controllers/burgers_controller.js');
-		// app.use("/", router);
 		app.get("/", function(req, res) {
-			res.render(__dirname + "/views/layouts/main.handlebars");
+			res.render("index");
+
 		})
 
 		// ** BEGINNING OF SCRAPE ROUTES **
@@ -87,13 +86,13 @@
 					});
 
 					// Stores the array in the database
-					// db.srapedData.insert({ results }, function(err, data) {
-					// 	if(err) {
-					// 		console.log(err);
-					// 	} else {
-					// 		res.json(data);
-					// 	}
-					// })
+					db.srapedData.insert({ results }, function(err, data) {
+						if(err) {
+							console.log(err);
+						} else {
+							res.json(data);
+						}
+					})
 				});
 			})
 
