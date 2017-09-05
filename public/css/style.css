@@ -7,7 +7,11 @@ body {
 
 .display-3, .lead {
 	text-align: center;
-	color: white;
+	color: black;
+}
+
+.display-3 {
+	margin-top: 200px;
 }
 
 .jumbotron {
@@ -17,6 +21,7 @@ body {
     display: block;
 	height: 100%;
 	object-fit: contain;
+	min-height: 600px;
 }
 
 .nav-butt {
