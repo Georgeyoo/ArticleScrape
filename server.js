@@ -28,7 +28,7 @@
 		// Stores the mongojs configuration to the variable "db"
 		var db = mongojs(databaseURL, collections);
 
-		// Serve static content for the app from the "views" directory in the application directory.
+		// Serve static content for the app from the "public" directory in the application directory.
 		app.use(express.static("public"));
 
 
