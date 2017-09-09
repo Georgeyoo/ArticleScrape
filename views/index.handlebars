@@ -1,12 +1,18 @@
+	<!-- Start handlebars -->
   <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper purple darken-3">
             <a href="#" class="brand-logo">ArticleScrape!</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#" class="nav-butt">Home</a></li>
-              <li><a href="#" class="nav-butt">Saved Articles</a></li>
-              <a class="waves-effect waves-light btn-large purple accent-4"><i class="material-icons left purple accent-4">remove_red_eye</i>Scrape Now!</a>
+              	<li><a href="#" class="nav-butt">Home</a></li>
+              	<li><a href="#" class="nav-butt">Saved Articles</a></li>
+              	<li>
+					<form action="/scrape" class="button-size submitForm">
+						<button class="waves-effect waves-light btn-large purple accent-4 scrapeBtn"><i class="material-icons left purple accent-4">remove_red_eye</i>Scrape Now!</button>
+					</form>
+				</li>
+
             </ul>
         </div>
       </nav>
@@ -20,6 +26,14 @@
   </div>
 </div>
 
-<div class="articles">
-
-</div>
+<div class="container-fluid">
+    <div class="row">  
+     <div class="col-lg-12" id="articleSection">  
+        <div class="panel panel-warning text-center" id="noneDiv">
+            <div class="panel-heading">
+                <h3 class="panel-title">No Articles -- Click the "Scrape Now" button!</h3>
+            </div>
+        </div>
+     </div>
+    </div>
+ </div>
