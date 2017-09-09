@@ -79,7 +79,7 @@ $(".scrapeBtn").on("click", function(event) {
 // Function for grabbing the scrapped data and formatting the data in a presentable way to the front
 function query() {
 
-    // var linkBtn = $("<button> View Story </button>");
+
 
   // Fetch the returned data from /api/scrape
   queryURL = "/api/scrape";
@@ -95,7 +95,7 @@ function query() {
     var articleLink = $("<a>");
     var saveBtn = $("<button>");
     var articleWhole = $("<input>");
-
+    var linkBtn = $("<button>");
       form.attr({
         action: "/save",
         method: "POST",
@@ -105,7 +105,7 @@ function query() {
       saveBtn.addClass("btn btn-md pull-right");
       saveBtn.attr("type", "submit");
       saveBtn.html("Save Article");
-      linkBtn.attr()
+      linkBtn.attr("type", "submit")
       articleTitle.html(response[i].title);
       articleLink.attr("href", response[i].link);
       heading.append(articleTitle);
