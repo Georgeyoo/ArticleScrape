@@ -79,14 +79,6 @@ $(".scrapeBtn").on("click", function(event) {
 // Function for grabbing the scrapped data and formatting the data in a presentable way to the front
 function query() {
 
-    // Declare variables for later use
-    var panel = $("<div>");
-    var form = $("<form>");
-    var heading = $("<div>");
-    var articleTitle = $("<h2>");
-    var articleLink = $("<a>");
-    var saveBtn = $("<button>");
-    var articleWhole = $("<input>");
     // var linkBtn = $("<button> View Story </button>");
 
   // Fetch the returned data from /api/scrape
@@ -94,6 +86,16 @@ function query() {
 
   $.ajax({url: queryURL, method: "GET"}).done(function(response) {
     for(var i = 0; i < 20; i ++) {
+
+      // Declare variables for later use
+    var panel = $("<div>");
+    var form = $("<form>");
+    var heading = $("<div>");
+    var articleTitle = $("<h2>");
+    var articleLink = $("<a>");
+    var saveBtn = $("<button>");
+    var articleWhole = $("<input>");
+
       form.attr({
         action: "/save",
         method: "POST",
