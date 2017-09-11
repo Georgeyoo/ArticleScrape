@@ -13,6 +13,8 @@
 		var cheerio = require("cheerio");
 		var bodyParser = require("body-parser");
 
+		// Import from models
+		var Article = require("../models/Article.js");
 
 // Routes
 
@@ -54,4 +56,28 @@
 			});
 		})
 
+	// Route for saving articles 
+	router.post("/saved", function(req, res){
+		var saveArticle = new Article (
+			{ title : req.body.title });
+		saveArticle.save(function(error, doc) {
+			if (error) {
+				console.log(error);
+			} else {
+				console.log(doc);
+			}
+		});
+		res.render("index");
+	});
+
+	// Route for displaying saved articles
+	router.get("/articles", function(req, res) {
+		Article.find({}, function(error, doc) {
+			if (error) {
+				res.send(error);
+			} else {
+				res.render("Saved!", { contents: doc });
+			}
+		});
+	});
 module.exports = router;

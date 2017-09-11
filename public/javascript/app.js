@@ -1,29 +1,22 @@
 
-
-// function displayResults(data) {
-//   // Add to the table here...
-//   console.log(data);
-
-//   for(var i = 0; i < data.length; i ++ ) {
-
-//     // console.log(data[i].name);
-//     var tdName = "<td>" + data[i].name + "</td>"
-//     var tdnumleg = "<td>" + data[i].numlegs + "</td>"
-//     var tdClass = "<td>" + data[i].class + "</td>"
-//     var tdWeight = "<td>" + data[i].weight + "</td>"
-//     var tdCalled = "<td>" + data[i].whatIWouldReallyCallIt + "</td>"
-
-//     $("#data").append("<tr>" + tdName + tdnumleg + tdClass + tdWeight + tdCalled +"</tr>");
-
-//   };
-// };
-
 $(".scrapeBtn").on("click", function(event) {
+    event.preventDefault();
+    query();
+    $("#hideDiv").hide();
 
-      event.preventDefault();
-      query();
-      $("#hideDiv").hide();
+});
 
+$("#showSaved").on("click", function(event) {
+    event.preventDefault();
+    savedOnes();
+    $("#hideDiv").hide();
+    $("#articleSection").hide();
+});
+
+$("#homeBtn").on("click", function(event) {
+    event.preventDefault();
+    $("#hideDiv").hide();
+    $("#articleSection").show();
 })
 
 // Function for grabbing the scrapped data and formatting the data in a presentable way to the front
@@ -76,3 +69,11 @@ function query() {
           }
     })
 };
+
+function savedOnes() {
+    var articleId;
+    $(document).on('click', '#articleArea', function(){
+        articleId = $(this).attr('data-id');//article id for each saved article for note
+    console.log(articleId);
+})
+}
