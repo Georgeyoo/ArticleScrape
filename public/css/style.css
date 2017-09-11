@@ -31,3 +31,13 @@ body {
 .brand-logo {
 	margin-top: 10px;
 }
+
+.panel-primary>.panel-heading {
+	background-color: #6a1b9a;
+	border-color: #6a1b9a;
+}
+
+.btn-lg {
+	background-color: #a0f;
+	border-color: #a0f;
+}

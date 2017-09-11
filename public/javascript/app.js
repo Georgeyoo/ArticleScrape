@@ -22,102 +22,57 @@ $(".scrapeBtn").on("click", function(event) {
 
       event.preventDefault();
       query();
-      //hides original panel-warning div 
-      $("#noneDiv").hide();
+      $("#hideDiv").hide();
 
 })
 
-
-// function scrapeQuery(){
-//     //grab data from api/scrape   
-//     queryURL = "/api/scrape";
-//     $.ajax({ url: queryURL, method: "GET" })
-//         // After data comes back from the request
-//         .done(function(response) {
-//           console.log(queryURL);
-//           console.log(response);
-//           for (var i =0; i <20; i++){
-//               //loop through results and add panels for each response 
-//               var well = $("<div>");
-//               var form = $("<form>");
-//               var panel = $("<div>");
-//               var heading = $("<div>")
-//               var headingText = $("<h3>");
-//               var button = $("<button>");
-//               var input1 = $("<input>");
-//               var input2 = $("<input>");
-//               well.addClass("well well-lg");
-//               panel.addClass("panel panel-primary");
-//               heading.addClass("panel-heading");
-//               headingText.addClass("panel-title");
-//               form.attr({
-//                             action:"/saved", 
-//                             method: "POST",
-//                             name: "article"
-//                         });
-//               input1.attr({
-//                 type:"hidden",
-//                 name: "title",
-//                 value:response[i].title
-//               });
-//               button.addClass("btn btn-sm btn-success pull-right")
-//               button.attr("type", "submit");
-//               button.html("Save Article");
-//               headingText.html(response[i].title);
-//               heading.append(headingText);
-//               heading.append(button);
-//               form.append(input1);
-//               form.append(button);
-//               panel.append(form);
-//               panel.append(heading);
-//               well.append(panel);
-//               $("#panelSection").append(well);
-//           }
-//     })
-// };
-
 // Function for grabbing the scrapped data and formatting the data in a presentable way to the front
+
 function query() {
 
+    // Fetch the returned data from /api/scrape 
+    queryURL = "/api/scrape";
+    $.ajax({ url: queryURL, method: "GET" }).done(function(response) {
+      for (var i =0; i <20; i++){
+              
+        // Declare variables for later use
+        var well = $("<div>");
+        var form = $("<form>");
+        var panel = $("<div>");
+        var heading = $("<div>")
+        var headingText = $("<h2>");
+        var button = $("<button>");
+        var articleArea = $("<input>");
 
+          well.addClass("well well-md");
+          panel.addClass("panel panel-primary");
+          heading.addClass("panel-heading");
+          headingText.addClass("panel-title");
+          form.attr({
+            action:"/saved", 
+            method: "POST",
+            name: "article"
+          });
 
-  // Fetch the returned data from /api/scrape
-  queryURL = "/api/scrape";
+          articleArea.attr({
+            type:"hidden",
+            name: "title",
+            value:response[i].title
+          });
 
-  $.ajax({url: queryURL, method: "GET"}).done(function(response) {
-    for(var i = 0; i < 20; i ++) {
+          button.addClass("btn btn-lg btn-success pull-right")
+          button.attr("type", "submit");
+          button.html("Save Article");
+          headingText.html(response[i].title);
+          heading.append(headingText);
+          heading.append(button);
+          form.append(articleArea);
+          form.append(button);
+          panel.append(form);
+          panel.append(heading);
+          well.append(panel);
 
-      // Declare variables for later use
-    var panel = $("<div>");
-    var form = $("<form>");
-    var heading = $("<div>");
-    var articleTitle = $("<h2>");
-    var articleLink = $("<a>");
-    var saveBtn = $("<button>");
-    var articleWhole = $("<input>");
-    var linkBtn = $("<button>");
-      form.attr({
-        action: "/save",
-        method: "POST",
-        name: "article"
-      });
-      panel.addClass("panel panel-primary");
-      saveBtn.addClass("btn btn-md pull-right");
-      saveBtn.attr("type", "submit");
-      saveBtn.html("Save Article");
-      linkBtn.attr("type", "submit")
-      articleTitle.html(response[i].title);
-      articleLink.attr("href", response[i].link);
-      heading.append(articleTitle);
-      heading.append(articleLink);
-      heading.append(saveBtn);
-      form.append(articleWhole);
-      form.append(saveBtn);
-      panel.append(form);
-      panel.append(heading);
-      // panel.append(linkBtn);
-      $("#articleSection").append(panel);
-
-    }
-  })
-}
+          $("#articleSection").append(well);
+          }
+    })
+};
