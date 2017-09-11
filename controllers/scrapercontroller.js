@@ -76,7 +76,8 @@
 			if (error) {
 				res.send(error);
 			} else {
-				res.render("Saved!", { contents: doc });
+				res.render("saved", { contents: doc });
+				console.log(doc);
 			}
 		});
 	});

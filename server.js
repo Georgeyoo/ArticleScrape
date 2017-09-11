@@ -29,6 +29,7 @@
 		// Serve static content for the app from the "public" directory in the application directory.
 		app.use(express.static("public"));
 
+		var port = process.env.PORT || 3000;
 
 
 // Database Setup
@@ -78,6 +79,4 @@
 
 
 // Listens on port 3000
-app.listen(3000, function() {
-	console.log("App running on port 3000");
-})
+app.listen(port);

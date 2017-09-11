@@ -70,10 +70,12 @@ function query() {
     })
 };
 
-function savedOnes() {
-    var articleId;
-    $(document).on('click', '#articleArea', function(){
-        articleId = $(this).attr('data-id');//article id for each saved article for note
+var articleId;
+$(document).on('click', '#articleArea', function(){
+    articleId = $(this).attr('data-id');//article id for each saved article for note
     console.log(articleId);
-})
+  });
+
+function savedOnes() {
+    
 }
