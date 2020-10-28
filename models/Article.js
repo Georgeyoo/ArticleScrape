@@ -1,10 +1,10 @@
 // Require mongoose
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // Create Schema class
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Create article schema
-var ArticleSchema = new Schema({
+let ArticleSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -18,6 +18,6 @@ var ArticleSchema = new Schema({
   }
 });
 
-var Article = mongoose.model("Article", ArticleSchema);
+let Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article;
